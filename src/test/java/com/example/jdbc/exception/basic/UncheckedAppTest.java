@@ -18,6 +18,17 @@ public class UncheckedAppTest {
         Assertions.assertThatThrownBy(() -> controller.request()).isInstanceOf(RuntimeException.class);
     }
 
+    @Test
+    void printEx() {
+        Controller controller = new Controller();
+
+        try {
+            controller.request();
+        }catch (Exception e) {
+            log.error("ex", e);
+        }
+    }
+
 
     static class Controller {
          Service service = new Service();
